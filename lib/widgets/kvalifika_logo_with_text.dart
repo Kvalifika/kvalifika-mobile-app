@@ -5,6 +5,6 @@ class KvalifikaLogoWithText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset('assets/images/kvalifika_logo_with_text');
+    return Image.asset('images/kvalifika_logo_with_text.png');
   }
 }
