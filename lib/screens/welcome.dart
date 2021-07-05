@@ -4,6 +4,30 @@ import 'package:kvalifika_demo/widgets/kvalifika_logo_with_text.dart';
 
 final kPrimaryColor = Color(0xFF89c35c);
 
+class KvalifikaHeader extends StatelessWidget {
+  const KvalifikaHeader({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          child: KvalifikaLogoWithText(),
+          padding: EdgeInsets.fromLTRB(70, 20, 70, 20),
+        ),
+        Text(
+          'Liveness Check',
+          style: TextStyle(
+            fontSize: 24,
+            color: kPrimaryColor,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
@@ -19,35 +43,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
-          child: Column(
-            children: [
-              Container(
-                child: KvalifikaLogoWithText(),
-                padding: EdgeInsets.fromLTRB(70, 20, 70, 20),
-              ),
-              Text(
-                'Liveness Check',
-                style: TextStyle(
-                  fontSize: 24,
-                  color: kPrimaryColor,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
+        Flexible(
+          child: KvalifikaHeader(),
+          flex: 1,
         ),
-        Expanded(
+        Flexible(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   'Please enter your email below. We will send you Kvalifika session data at the end of the process.',
                   style: TextStyle(fontSize: 16, color: Color(0xFF222222)),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Form(
                   key: _formKey,
@@ -68,7 +79,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         },
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 15,
                       ),
                       ElevatedButton(
                         onPressed: () {
@@ -76,9 +87,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         },
                         style: ElevatedButton.styleFrom(
                           primary: kPrimaryColor,
-                          padding: EdgeInsets.all(15),
+                          padding: EdgeInsets.all(18),
                         ),
-                        child: Text('Continue'),
+                        child: Text(
+                          'CONTINUE',
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -86,6 +102,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ],
             ),
           ),
+          flex: 1,
+        ),
+        Flexible(
+          child: Container(),
+          flex: 1,
         ),
       ],
     );
