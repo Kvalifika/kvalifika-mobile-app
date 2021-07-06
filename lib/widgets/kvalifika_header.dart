@@ -11,12 +11,14 @@ class KvalifikaHeader extends StatelessWidget {
       children: [
         Container(
           child: KvalifikaLogoWithText(),
-          padding: EdgeInsets.fromLTRB(70, 20, 70, 20),
+          width: 250,
+          margin: EdgeInsets.only(top: 20),
         ),
+        SizedBox(height: 10,),
         Text(
           'Liveness Check',
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 22,
             color: kPrimaryColor,
             fontWeight: FontWeight.w500,
           ),
