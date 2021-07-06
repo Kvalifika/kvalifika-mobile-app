@@ -1,32 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:kvalifika_demo/widgets/kvalifika_logo_with_text.dart';
-
-final kPrimaryColor = Color(0xFF89c35c);
-
-class KvalifikaHeader extends StatelessWidget {
-  const KvalifikaHeader({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          child: KvalifikaLogoWithText(),
-          padding: EdgeInsets.fromLTRB(70, 20, 70, 20),
-        ),
-        Text(
-          'Liveness Check',
-          style: TextStyle(
-            fontSize: 24,
-            color: kPrimaryColor,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ],
-    );
-  }
-}
+import 'package:kvalifika_demo/colors.dart';
+import 'package:kvalifika_demo/widgets/kvalifika_header.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -55,7 +30,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               children: [
                 Text(
                   'Please enter your email below. We will send you Kvalifika session data at the end of the process.',
-                  style: TextStyle(fontSize: 16, color: Color(0xFF222222)),
+                  style: TextStyle(fontSize: 16, color: kTextColor),
                 ),
                 SizedBox(
                   height: 20,
@@ -66,11 +41,30 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       TextFormField(
+                        style: TextStyle(color: kTextColor),
                         decoration: InputDecoration(
                           hintText: 'Email Address',
                           hintStyle:
                               TextStyle(color: kPrimaryColor, fontSize: 16),
+                          errorStyle: TextStyle(
+                            fontSize: 14,
+                          ),
+                          errorBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: kErrorColor),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: kPrimaryColor),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: kPrimaryColor),
+                          ),
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter a valid email';
+                          }
+                          return null;
+                        },
                         keyboardType: TextInputType.emailAddress,
                         onChanged: (value) {
                           setState(() {
@@ -83,7 +77,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          print(_email);
+                          if (_formKey.currentState!.validate()) {
+                            print(_email);
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           primary: kPrimaryColor,
