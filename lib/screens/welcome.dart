@@ -33,16 +33,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       },
       locale: KvalifikaSdkLocale.EN,
       builder: (sdk) => Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Flexible(
+          Expanded(
+            flex: 2,
             child: KvalifikaHeader(),
-            flex: 1,
           ),
-          Flexible(
+          Expanded(
+            flex: 3,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     'Please enter your email below. We will send you Kvalifika session data at the end of the process.',
@@ -114,11 +117,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ],
               ),
             ),
-            flex: 1,
-          ),
-          Flexible(
-            child: Container(),
-            flex: 1,
           ),
         ],
       ),
