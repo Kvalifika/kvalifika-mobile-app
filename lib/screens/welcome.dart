@@ -24,12 +24,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       onInitialize: () {},
       onStart: (sessionId) {},
       onFinish: (sessionId) {
-        Navigator.push(context,
-            new MaterialPageRoute(builder: (context) => SuccessScreen()));
+        Navigator.push(
+          context,
+          new MaterialPageRoute(builder: (context) => successScreen),
+        );
       },
       onError: (error, message) {
-        Navigator.push(context,
-            new MaterialPageRoute(builder: (context) => ErrorScreen()));
+        Navigator.push(
+          context,
+          new MaterialPageRoute(builder: (context) => errorScreen),
+        );
       },
       locale: KvalifikaSdkLocale.EN,
       builder: (sdk) => Column(
