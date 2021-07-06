@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kvalifika_demo/colors.dart';
+import 'package:kvalifika_demo/screens/error.dart';
 import 'package:kvalifika_demo/screens/success.dart';
 import 'package:kvalifika_demo/widgets/kvalifika_header.dart';
 import 'package:kvalifika_sdk/kvalifika_sdk.dart';
@@ -23,12 +24,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       onInitialize: () {},
       onStart: (sessionId) {},
       onFinish: (sessionId) {
-        print(_email);
+        Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => SuccessScreen()));
       },
       onError: (error, message) {
-        if (error == KvalifikaSdkError.INVALID_APP_ID) {
-          print("invalid app id, please provide app id");
-        }
+        Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => ErrorScreen()));
       },
       locale: KvalifikaSdkLocale.EN,
       builder: (sdk) => Column(
@@ -93,11 +94,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              // sdk.startSession();
-                              Navigator.push(
-                                  context,
-                                  new MaterialPageRoute(
-                                      builder: (context) => SuccessScreen()));
+                              sdk.startSession();
                             }
                           },
                           style: ElevatedButton.styleFrom(

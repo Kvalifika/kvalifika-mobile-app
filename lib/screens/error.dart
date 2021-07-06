@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kvalifika_demo/colors.dart';
 
-class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({Key? key}) : super(key: key);
+class ErrorScreen extends StatelessWidget {
+  const ErrorScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +18,19 @@ class SuccessScreen extends StatelessWidget {
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
-              Icons.check_circle_rounded,
+              Icons.cancel_rounded,
               size: 80,
-              color: kPrimaryColor,
+              color: kErrorColor,
             ),
             SizedBox(
               height: 20,
             ),
             Text(
-              'Verification Completed. Please check your email',
-              style: TextStyle(color: kTextColor, fontSize: 20),
+              'Error happened. Please try again',
+              style: TextStyle(color: kTextColor, fontSize: 18),
               textAlign: TextAlign.center,
             ),
           ],
