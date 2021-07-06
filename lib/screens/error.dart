@@ -18,7 +18,6 @@ class ErrorScreen extends StatelessWidget {
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
               Icons.cancel_rounded,
@@ -30,7 +29,11 @@ class ErrorScreen extends StatelessWidget {
             ),
             Text(
               'Error happened. Please try again',
-              style: TextStyle(color: kTextColor, fontSize: 18),
+              style: TextStyle(
+                color: kTextColor,
+                fontSize: 18,
+                decoration: TextDecoration.none,
+              ),
               textAlign: TextAlign.center,
             ),
           ],

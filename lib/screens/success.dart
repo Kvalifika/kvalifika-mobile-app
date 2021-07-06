@@ -29,7 +29,11 @@ class SuccessScreen extends StatelessWidget {
             ),
             Text(
               'Verification Completed. Please check your email',
-              style: TextStyle(color: kTextColor, fontSize: 20),
+              style: TextStyle(
+                color: kTextColor,
+                fontSize: 18,
+                decoration: TextDecoration.none,
+              ),
               textAlign: TextAlign.center,
             ),
           ],

@@ -19,7 +19,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.light,
       home: Scaffold(
         body: SafeArea(
           child: WelcomeScreen(),
