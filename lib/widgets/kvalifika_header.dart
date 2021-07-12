@@ -10,11 +10,16 @@ class KvalifikaHeader extends StatelessWidget {
     return Column(
       children: [
         Container(
-          child: KvalifikaLogoWithText(),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minWidth: 100, maxWidth: 250),
+            child: KvalifikaLogoWithText(),
+          ),
           width: 250,
           margin: EdgeInsets.only(top: 20),
         ),
-        SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         Text(
           'Liveness Check',
           style: TextStyle(

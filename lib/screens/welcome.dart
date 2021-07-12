@@ -98,7 +98,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       children: [
                         TextFormField(
                           style: TextStyle(color: kTextColor),
-                          initialValue: _email,
+                          autofocus: false,
                           decoration: InputDecoration(
                             hintText: 'Email Address',
                             hintStyle:
