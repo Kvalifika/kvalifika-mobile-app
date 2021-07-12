@@ -117,10 +117,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             ),
                           ),
                           validator: (value) {
-                            if (Validator.isValidEmail(value)) {
-                              return 'Please enter a valid email';
-                            }
-                            return null;
+                            if (Validator.isValidEmail(value)) return null;
+                            return 'Please enter a valid email';
                           },
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (value) {
