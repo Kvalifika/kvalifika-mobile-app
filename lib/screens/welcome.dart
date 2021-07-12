@@ -27,7 +27,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Future<bool> sendMail(String sessionId) async {
     http.Response res = await http.post(
         Uri.parse(
-            'https://apidev.kvalifika.com/verification/mobile-pdf/a715eb2f-b090-4a38-a0ee-44a43b54a960'),
+            'https://apidev.kvalifika.com/verification/mobile-pdf/$sessionId'),
         body: jsonEncode({
           'appId': _appId,
           'email': _email,
