@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/widgets.dart';
 import 'package:kvalifika_demo/colors.dart';
+import 'package:kvalifika_demo/screens/email_field.dart';
 import 'package:kvalifika_demo/screens/error.dart';
 import 'package:kvalifika_demo/screens/success.dart';
-import 'package:kvalifika_demo/validator.dart';
 import 'package:kvalifika_demo/widgets/kvalifika_header.dart';
 import 'package:kvalifika_sdk/kvalifika_sdk.dart';
 
@@ -96,37 +96,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        TextFormField(
-                          style: TextStyle(color: kTextColor),
-                          autofocus: false,
-                          decoration: InputDecoration(
-                            hintText: 'Email Address',
-                            hintStyle:
-                                TextStyle(color: kPrimaryColor, fontSize: 16),
-                            errorStyle: TextStyle(
-                              fontSize: 14,
-                            ),
-                            errorBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: kErrorColor),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: kPrimaryColor),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: kPrimaryColor),
-                            ),
-                          ),
-                          validator: (value) {
-                            if (Validator.isValidEmail(value)) return null;
-                            return 'Please enter a valid email';
-                          },
-                          keyboardType: TextInputType.emailAddress,
-                          onChanged: (value) {
-                            setState(() {
-                              _email = value;
-                            });
-                          },
-                        ),
+                        EmailField(onChanged: (value) {
+                          setState(() {
+                            _email = value;
+                          });
+                        }),
                         SizedBox(
                           height: 15,
                         ),
@@ -142,9 +116,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           ),
                           child: Text(
                             'START SESSION',
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
+                            style: TextStyle(fontSize: 16),
                           ),
                         ),
                       ],
