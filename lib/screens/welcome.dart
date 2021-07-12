@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:kvalifika_demo/colors.dart';
 import 'package:kvalifika_demo/screens/error.dart';
 import 'package:kvalifika_demo/screens/success.dart';
+import 'package:kvalifika_demo/validator.dart';
 import 'package:kvalifika_demo/widgets/kvalifika_header.dart';
 import 'package:kvalifika_sdk/kvalifika_sdk.dart';
 
@@ -18,7 +19,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  String _email = "okradzemirian@gmail.com";
+  String _email = "";
   // final String _appId = '7bd2bab9-5bcb-4f8d-a0c8-d7fd3fd4653b'; // Production
   final String _appId = 'b0ed864b-ee81-4ddb-825f-21bf7247e7b4'; // Development
   final _formKey = GlobalKey<FormState>();
@@ -116,7 +117,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             ),
                           ),
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
+                            if (Validator.isValidEmail(value)) {
                               return 'Please enter a valid email';
                             }
                             return null;
