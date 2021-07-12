@@ -1,4 +1,8 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/widgets.dart';
 import 'package:kvalifika_demo/colors.dart';
 import 'package:kvalifika_demo/screens/error.dart';
@@ -14,29 +18,57 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  String _email = "";
+  String _email = "okradzemirian@gmail.com";
+  // final String _appId = '7bd2bab9-5bcb-4f8d-a0c8-d7fd3fd4653b'; // Production
+  final String _appId = 'b0ed864b-ee81-4ddb-825f-21bf7247e7b4'; // Development
   final _formKey = GlobalKey<FormState>();
+
+  Future<bool> sendMail(String sessionId) async {
+    http.Response res = await http.post(
+        Uri.parse(
+            'https://apidev.kvalifika.com/verification/mobile-pdf/a715eb2f-b090-4a38-a0ee-44a43b54a960'),
+        body: jsonEncode({
+          'appId': _appId,
+          'email': _email,
+        }),
+        headers: {'Content-Type': 'application/json'});
+    return res.statusCode == 201;
+  }
+
+  MaterialPageRoute errorPage(context) {
+    return new MaterialPageRoute(builder: (context) => ErrorScreen());
+  }
+
+  MaterialPageRoute successPage(context, loading) {
+    return new MaterialPageRoute(
+      builder: (context) => SuccessScreen(loading: loading),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return KvalifikaSdk(
-      appId: "7bd2bab9-5bcb-4f8d-a0c8-d7fd3fd4653b",
+      appId: _appId,
+      development: true,
       onInitialize: () {},
       onStart: (sessionId) {},
-      onFinish: (sessionId) {
-        Navigator.push(
-          context,
-          new MaterialPageRoute(builder: (context) => successScreen),
-        );
+      onFinish: (sessionId) async {
+        Navigator.push(context, successPage(context, true));
+        final success = await sendMail(sessionId);
+
+        if (success) {
+          Navigator.pushReplacement(context, successPage(context, false));
+        } else {
+          Navigator.pushReplacement(context, errorPage(context));
+        }
       },
       onError: (error, message) {
-        Navigator.push(
-          context,
-          new MaterialPageRoute(builder: (context) => errorScreen),
-        );
+        if (error != KvalifikaSdkError.USER_CANCELLED) {
+          Navigator.push(context, errorPage(context));
+        }
       },
       locale: KvalifikaSdkLocale.EN,
-      builder: (sdk) => Column(
+      builder: (context, sdk) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -65,6 +97,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       children: [
                         TextFormField(
                           style: TextStyle(color: kTextColor),
+                          initialValue: _email,
                           decoration: InputDecoration(
                             hintText: 'Email Address',
                             hintStyle:
