@@ -8,7 +8,7 @@ class ErrorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    new Timer(const Duration(seconds: 10), () {
+    new Timer(const Duration(seconds: 2), () {
       Navigator.pop(context);
     });
 
@@ -20,7 +20,7 @@ class ErrorScreen extends StatelessWidget {
           children: [
             Icon(
               Icons.cancel_rounded,
-              size: 80,
+              size: 60,
               color: kErrorColor,
             ),
             SizedBox(
