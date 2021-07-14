@@ -21,7 +21,7 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   String _email = "";
   // final String _appId = '7bd2bab9-5bcb-4f8d-a0c8-d7fd3fd4653b'; // Production
-  final String _appId = 'b0ed864b-ee81-4ddb-825f-21bf7247e7b4'; // Development
+  final String _appId = 'd4bb88d7-8e6d-4653-baef-9d87c1e102e6'; // Development
   final _formKey = GlobalKey<FormState>();
 
   Future<bool> sendMail(String sessionId) async {
