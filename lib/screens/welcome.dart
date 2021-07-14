@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/widgets.dart';
 import 'package:kvalifika_demo/colors.dart';
-import 'package:kvalifika_demo/screens/email_field.dart';
+import 'package:kvalifika_demo/widgets/email_field.dart';
 import 'package:kvalifika_demo/screens/error.dart';
 import 'package:kvalifika_demo/screens/success.dart';
 import 'package:kvalifika_demo/widgets/kvalifika_header.dart';
