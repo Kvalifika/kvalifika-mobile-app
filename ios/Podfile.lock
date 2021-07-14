@@ -1,0 +1,34 @@
+PODS:
+  - FaceTecSDK (9.0.4)
+  - Flutter (1.0.0)
+  - Kvalifika (0.2.2):
+    - FaceTecSDK (= 9.0.4)
+  - kvalifika_sdk (0.9.3):
+    - Flutter
+    - Kvalifika (= 0.2.2)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - kvalifika_sdk (from `.symlinks/plugins/kvalifika_sdk/ios`)
+
+SPEC REPOS:
+  https://github.com/Kvalifika/kvalifika-cocoapods-specs.git:
+    - Kvalifika
+  https://github.com/Kvalifika/zoom-cocoapods-specs.git:
+    - FaceTecSDK
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  kvalifika_sdk:
+    :path: ".symlinks/plugins/kvalifika_sdk/ios"
+
+SPEC CHECKSUMS:
+  FaceTecSDK: c71e5db76bd6cc1f6065dbc32f933995b26ec6d7
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  Kvalifika: 4be151c8981efc7ed3271e06b51f9cce203feb4b
+  kvalifika_sdk: 5ff3b523f8977792fb2135df57a21345aec0a1af
+
+PODFILE CHECKSUM: 80f0f8cbc8c9df861553791e675a1695c53842ff
+
+COCOAPODS: 1.10.1
