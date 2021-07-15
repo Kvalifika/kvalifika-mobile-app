@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         fontFamily: 'OpenSans',
       ),
+      themeMode: ThemeMode.light,
       home: Scaffold(
         body: SafeArea(
           child: WelcomeScreen(),
