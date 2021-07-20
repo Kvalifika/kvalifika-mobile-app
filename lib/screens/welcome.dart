@@ -51,9 +51,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return KvalifikaSdk(
       appId: _appId,
       development: true,
-      onInitialize: () {},
-      onStart: (sessionId) {},
-      onFinish: (sessionId) async {
+      onInitialize: (context) {},
+      onStart: (context, sessionId) {},
+      onFinish: (context, sessionId) async {
         Navigator.push(context, successPage(context, true));
         final success = await sendMail(sessionId);
 
@@ -63,7 +63,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           Navigator.pushReplacement(context, errorPage(context));
         }
       },
-      onError: (error, message) {
+      onError: (context, error, message) {
         if (error != KvalifikaSdkError.USER_CANCELLED) {
           Navigator.push(context, errorPage(context));
         }
